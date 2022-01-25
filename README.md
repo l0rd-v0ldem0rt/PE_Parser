@@ -1,4 +1,4 @@
 # PE_Parser
 PE_Parser
-This parse the PE Structure.
-Basic Tool to start malware dev.
+\nThis parse the PE Structure.
+\nBasic Tool to start malware dev.
