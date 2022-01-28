@@ -1,7 +1,10 @@
 #include <stdio.h>
 #include <windows.h>
 
-int main(){
+int main(int argc, char **argv){
+
+    char *dll = argv[1];
+
     printf("\n");
     printf("\n");
     printf("[+]+++++++++++++++++++++++++++++++++[+]\n");
@@ -11,8 +14,10 @@ int main(){
     printf("\n");
     HMODULE hKernel32;
 
-    hKernel32 = LoadLibraryA("kernel32.dll");
+    //hKernel32 = LoadLibraryA("kernel32.dll");
     
+    hKernel32 = LoadLibraryA(dll);
+
     printf("hKernel32 : 0x%p : %s\n", hKernel32, hKernel32);
 
     //dos header
@@ -71,34 +76,34 @@ int main(){
     printf("[+]++++NT Header -> Optional Header++++[+]\n");
     printf("\n");
     printf("Magic : 0x%X\n", nt_header->OptionalHeader.Magic);
-    printf("Major Linker Version : 0x%X\n", nt_header->OptionalHeader.MajorLinkerVersion);
-    printf("Minor Linker Version : 0x%X\n", nt_header->OptionalHeader.MinorLinkerVersion);
-    printf("Size Of Code : 0x%X\n", nt_header->OptionalHeader.SizeOfCode);
+	printf("Major Linker Version : 0x%X\n", nt_header->OptionalHeader.MajorLinkerVersion);
+	printf("Minor Linker Version : 0x%X\n", nt_header->OptionalHeader.MinorLinkerVersion);
+	printf("Size Of Code : 0x%X\n", nt_header->OptionalHeader.SizeOfCode);
     printf("Size Of Initialized Data : 0x%X\n", nt_header->OptionalHeader.SizeOfInitializedData);
     printf("Size Of UnInitialized Data : 0x%X\n", nt_header->OptionalHeader.SizeOfUninitializedData);
-    printf("Address Of Entry Point (.text) : 0x%X\n", nt_header->OptionalHeader.AddressOfEntryPoint);
-    printf("Base Of Code : 0x%X\n", nt_header->OptionalHeader.BaseOfCode);
-    printf("Image Base : 0x%X\n", nt_header->OptionalHeader.ImageBase);
-    printf("Section Alignment : 0x%X\n", nt_header->OptionalHeader.SectionAlignment);
-    printf("File Alignment : 0x%X\n", nt_header->OptionalHeader.FileAlignment);
-    printf("Major Operating System Version : 0x%X\n", nt_header->OptionalHeader.MajorOperatingSystemVersion);
-    printf("Minor Operating System Version : 0x%X\n", nt_header->OptionalHeader.MinorOperatingSystemVersion);
-    printf("Major Image Version : 0x%X\n", nt_header->OptionalHeader.MajorImageVersion);
-    printf("Minor Image Version : 0x%X\n", nt_header->OptionalHeader.MinorImageVersion);
-    printf("Major Subsystem Version : 0x%X\n", nt_header->OptionalHeader.MajorSubsystemVersion);
-    printf("Minor Subsystem Version : 0x%X\n", nt_header->OptionalHeader.MinorSubsystemVersion);
-    printf("Win32 Version Value : 0x%X\n", nt_header->OptionalHeader.Win32VersionValue);
-    printf("Size Of Image : 0x%X\n", nt_header->OptionalHeader.SizeOfImage);
-    printf("Size Of Headers : 0x%X\n", nt_header->OptionalHeader.SizeOfHeaders);
-    printf("CheckSum : 0x%X\n", nt_header->OptionalHeader.CheckSum);
-    printf("Subsystem : 0x%X\n", nt_header->OptionalHeader.Subsystem);
-    printf("DllCharacteristics : 0x%X\n", nt_header->OptionalHeader.DllCharacteristics);
-    printf("Size Of Stack Reserve : 0x%X\n", nt_header->OptionalHeader.SizeOfStackReserve);
-    printf("Size Of Stack Commit : 0x%X\n", nt_header->OptionalHeader.SizeOfStackCommit);
-    printf("Size Of Heap Reserve : 0x%X\n", nt_header->OptionalHeader.SizeOfHeapReserve);
-    printf("Size Of Heap Commit : 0x%X\n", nt_header->OptionalHeader.SizeOfHeapCommit);
-    printf("Loader Flags : 0x%X\n", nt_header->OptionalHeader.LoaderFlags);
-    printf("Number Of Rva And Sizes : 0x%X\n", nt_header->OptionalHeader.NumberOfRvaAndSizes);
+	printf("Address Of Entry Point (.text) : 0x%X\n", nt_header->OptionalHeader.AddressOfEntryPoint);
+	printf("Base Of Code : 0x%X\n", nt_header->OptionalHeader.BaseOfCode);
+	printf("Image Base : 0x%X\n", nt_header->OptionalHeader.ImageBase);
+	printf("Section Alignment : 0x%X\n", nt_header->OptionalHeader.SectionAlignment);
+	printf("File Alignment : 0x%X\n", nt_header->OptionalHeader.FileAlignment);
+	printf("Major Operating System Version : 0x%X\n", nt_header->OptionalHeader.MajorOperatingSystemVersion);
+	printf("Minor Operating System Version : 0x%X\n", nt_header->OptionalHeader.MinorOperatingSystemVersion);
+	printf("Major Image Version : 0x%X\n", nt_header->OptionalHeader.MajorImageVersion);
+	printf("Minor Image Version : 0x%X\n", nt_header->OptionalHeader.MinorImageVersion);
+	printf("Major Subsystem Version : 0x%X\n", nt_header->OptionalHeader.MajorSubsystemVersion);
+	printf("Minor Subsystem Version : 0x%X\n", nt_header->OptionalHeader.MinorSubsystemVersion);
+	printf("Win32 Version Value : 0x%X\n", nt_header->OptionalHeader.Win32VersionValue);
+	printf("Size Of Image : 0x%X\n", nt_header->OptionalHeader.SizeOfImage);
+	printf("Size Of Headers : 0x%X\n", nt_header->OptionalHeader.SizeOfHeaders);
+	printf("CheckSum : 0x%X\n", nt_header->OptionalHeader.CheckSum);
+	printf("Subsystem : 0x%X\n", nt_header->OptionalHeader.Subsystem);
+	printf("DllCharacteristics : 0x%X\n", nt_header->OptionalHeader.DllCharacteristics);
+	printf("Size Of Stack Reserve : 0x%X\n", nt_header->OptionalHeader.SizeOfStackReserve);
+	printf("Size Of Stack Commit : 0x%X\n", nt_header->OptionalHeader.SizeOfStackCommit);
+	printf("Size Of Heap Reserve : 0x%X\n", nt_header->OptionalHeader.SizeOfHeapReserve);
+	printf("Size Of Heap Commit : 0x%X\n", nt_header->OptionalHeader.SizeOfHeapCommit);
+	printf("Loader Flags : 0x%X\n", nt_header->OptionalHeader.LoaderFlags);
+	printf("Number Of Rva And Sizes : 0x%X\n", nt_header->OptionalHeader.NumberOfRvaAndSizes);
 
     //Data Directory
     printf("\n");
@@ -170,93 +175,37 @@ int main(){
         printf("[+]%s\n", (ULONG_PTR)hKernel32 + exportName[i]);
     }
 
+    //Export symbols
+
+    printf("\n");
+    printf("[+]++++Exported Symbols++++[+]\n");
+    printf("\n");
+    getchar();
+
+    DWORD *exportFunction = (DWORD*)((LPBYTE)hKernel32 + export->AddressOfFunctions);
+    DWORD j = 0;
+    for (j; j < export->NumberOfFunctions; j++){
+        printf("[+]%p\n", (ULONG_PTR)hKernel32  + exportFunction[j]);
+    }
+
+    //export
+    //Function name  - Function name pointers
+
+    printf("\n");
+    printf("[+]++++Function Name - Function Name Pointers++++[+]\n");
+    printf("\n");
+    getchar();
+    
+    DWORD z = 0;
+
+    for (z; z < export->NumberOfFunctions; z++){
+        printf("[+]%s -> %p\n", (ULONG_PTR)hKernel32  + exportName[z], (ULONG_PTR)hKernel32  + exportFunction[z]);
+    }
+   
     //close the handle
     CloseHandle(hKernel32);
 
-    //+++++++++++++++++//
-    //rough work//
-    //  //this works   
-	// DWORD i = 0;
-	// for(i; i < export->NumberOfNames; i++) {
-	// 	printf("%16x\n", (LPBYTE)hKernel32 + exportName[i]);
-	// }
 
-    //this work to fins the function from string
-    //ULONG_PTR T1;
-    //T1 = 0x00007FFD36a52c6f;
-    //T1 = 0x36a52c6f;
-
-    //printf("T1: %s\n", T1);
-
-    //+++++++++++++++++//
-
-
-
-
-    
-
-    //++++++//
-
-    // PIMAGE_EXPORT_DIRECTORY export = (PIMAGE_EXPORT_DIRECTORY)((LPBYTE)hKernel32 + nt_header->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_EXPORT].VirtualAddress);
-
-    // DWORD *exportName = (DWORD*)((LPBYTE)hKernel32 + export->AddressOfNames);
-
-    // // printf("dos : %x\n", (LPBYTE)dos_header);
-
-    // // printf("hKernel32: %x\n", (LPBYTE)hKernel32);
-
-	// DWORD i = 0;
-	// for(i; i < export->NumberOfNames; i++) {
-	// 	printf("%s\n", hKernel32 + exportName[i]);
-	// }
-
-    //+++++++++++++++//
-
-
-    // PIMAGE_EXPORT_DIRECTORY export;
-    // export = (PIMAGE_EXPORT_DIRECTORY)((LPBYTE)nt_header->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_EXPORT].VirtualAddress);
-
-    // PIMAGE_EXPORT_DIRECTORY export_dir_add;
-    // export_dir_add = (PIMAGE_EXPORT_DIRECTORY)((LPBYTE)dos_header + sizeof(nt_header->OptionalHeader));
-
-    
-
-    //PIMAGE_EXPORT_DIRECTORY  pExportDataDirAddr = (PIMAGE_EXPORT_DIRECTORY)((LPBYTE)nt_header->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_EXPORT].VirtualAddress);
-
-    
-    // PIMAGE_DATA_DIRECTORY pExportDataDir = (PIMAGE_DATA_DIRECTORY)(nt_header->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_EXPORT]);
-
-
-    // PIMAGE_DATA_DIRECTORY  pExportDataDir;
-    
-    // pExportDataDir = (PIMAGE_DATA_DIRECTORY)(nt_header->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_EXPORT]);
-	// PIMAGE_EXPORT_DIRECTORY pExportDirAddr = (PIMAGE_EXPORT_DIRECTORY) (dos_header + pExportDataDir->VirtualAddress);
-
-    // resolve addresses to Export Address Table, table of function names and "table of ordinals"
-	// DWORD * pEAT = (DWORD *) (nt_header + pExportDataDirAddr->AddressOfFunctions);
-	// DWORD * pFuncNameTbl = (DWORD *) (nt_header + pExportDataDirAddr->AddressOfNames);
-	// WORD * pHintsTbl = (WORD *) (nt_header + pExportDataDirAddr->AddressOfNameOrdinals);
-
-   
-    //nt_header = ((PIMAGE_NT_HEADERS)((LPBYTE)dos_header + dos_header->e_lfanew));
-
-    
-    //section_header = (PIMAGE_SECTION_HEADER)((LPBYTE)dos_header + (LPBYTE)sizeof(IMAGE_DOS_HEADER) + (LPBYTE)sizeof(IMAGE_NT_HEADERS));
-    
-    // printf("dos %x:\n", (DWORD)dos_header);
-    
-    // printf("nt_header %x:\n",((LPBYTE)dos_header + dos_header->e_lfanew) + sizeof(IMAGE_NT_HEADERS));
-    
-    // printf("dos:%d NT:%d\n", (DWORD)sizeof(IMAGE_DOS_HEADER), (DWORD)sizeof(IMAGE_NT_HEADERS));
-
-    // section_header = (void*)(((LPBYTE)dos_header + dos_header->e_lfanew) + sizeof(IMAGE_NT_HEADERS));
-
-    //DWORD section_location;
-
-    //section_location = ((DWORD)nt_header + sizeof(DWORD) + (DWORD)(sizeof(IMAGE_FILE_HEADER)) + (DWORD)nt_header->FileHeader.SizeOfOptionalHeader);
-
-    // section_location = (DWORD)nt_header + 0x108;
-    // getchar();
 
     return 0;
 }
